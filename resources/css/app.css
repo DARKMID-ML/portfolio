@@ -40,20 +40,17 @@
     --font-display: 'Anybody', var(--font-bricolage);
     --font-editorial: 'Anybody', var(--font-bricolage);
     --font-code: var(--font-dm-mono);
-    /* Identité « MID / 223 » — violet profond, lime acide, vert forêt. */
-    --color-bone: #f4f0e6;
-    --color-ink: #0b0b0c;
-    --color-violet: #341b86;
-    --color-lime: #d6ff3f;
-    --color-pine: #0e5a46;
-    --color-lilac: #e6def8;
-
-    /* Anciens noms conservés pour les dégradés de projets déjà en base.
-       Les valeurs pointent vers la nouvelle palette. */
-    --color-clay: #341b86;
-    --color-cobalt: #d6ff3f;
-    --color-moss: #0e5a46;
-    --color-soot: #0b0b0c;
+    /* Palette DEVSO — noir, blanc et rouge. */
+    --color-bone: #ffffff;
+    --color-ink: #000000;
+    --color-violet: #0a0a0a;
+    --color-lime: #e52321;
+    --color-pine: #b01c1b;
+    --color-lilac: #f5f5f5;
+    --color-clay: #1a1a1a;
+    --color-cobalt: #e52321;
+    --color-moss: #b01c1b;
+    --color-soot: #0a0a0a;
     --color-background: var(--background);
     --color-foreground: var(--foreground);
     --color-sidebar-ring: var(--sidebar-ring);
@@ -104,39 +101,39 @@
         ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
         'Liberation Mono', monospace;
     /* ----- Thème Dark Tech permanent ----- */
-    --neon-green: #34d399;
-    --neon-teal: #2dd4bf;
-    --background: #0a0a0f;
-    --foreground: #e8eaf2;
+    --neon-green: #e52321;
+    --neon-teal: #b01c1b;
+    --background: #0a0a0a;
+    --foreground: #ffffff;
     --card: rgba(255, 255, 255, 0.04);
-    --card-foreground: #e8eaf2;
-    --popover: #12121a;
-    --popover-foreground: #e8eaf2;
-    --primary: #34d399;
-    --primary-foreground: #0a0a0f;
+    --card-foreground: #ffffff;
+    --popover: #1a1a1a;
+    --popover-foreground: #ffffff;
+    --primary: #e52321;
+    --primary-foreground: #ffffff;
     --secondary: rgba(255, 255, 255, 0.06);
-    --secondary-foreground: #e8eaf2;
+    --secondary-foreground: #ffffff;
     --muted: rgba(255, 255, 255, 0.06);
-    --muted-foreground: #8b90a7;
-    --accent: rgba(52, 211, 153, 0.12);
-    --accent-foreground: #34d399;
-    --destructive: #f43f5e;
+    --muted-foreground: rgba(255, 255, 255, 0.6);
+    --accent: rgba(229, 35, 33, 0.12);
+    --accent-foreground: #e52321;
+    --destructive: #b01c1b;
     --border: rgba(255, 255, 255, 0.09);
     --input: rgba(255, 255, 255, 0.1);
-    --ring: rgba(52, 211, 153, 0.5);
-    --chart-1: #34d399;
-    --chart-2: #2dd4bf;
-    --chart-3: #34d399;
-    --chart-4: #fbbf24;
-    --chart-5: #f43f5e;
-    --sidebar: #0f0f16;
-    --sidebar-foreground: #e8eaf2;
-    --sidebar-primary: #34d399;
-    --sidebar-primary-foreground: #0a0a0f;
+    --ring: rgba(229, 35, 33, 0.5);
+    --chart-1: #e52321;
+    --chart-2: #b01c1b;
+    --chart-3: #1a1a1a;
+    --chart-4: #f5f5f5;
+    --chart-5: #000000;
+    --sidebar: #0a0a0a;
+    --sidebar-foreground: #ffffff;
+    --sidebar-primary: #e52321;
+    --sidebar-primary-foreground: #ffffff;
     --sidebar-accent: rgba(255, 255, 255, 0.06);
-    --sidebar-accent-foreground: #e8eaf2;
+    --sidebar-accent-foreground: #ffffff;
     --sidebar-border: rgba(255, 255, 255, 0.09);
-    --sidebar-ring: rgba(52, 211, 153, 0.5);
+    --sidebar-ring: rgba(229, 35, 33, 0.5);
 }
 
 @layer base {
@@ -151,17 +148,17 @@
         background-image:
             radial-gradient(
                 ellipse 80% 50% at 20% -10%,
-                rgba(52, 211, 153, 0.07),
+                rgba(229, 35, 33, 0.07),
                 transparent
             ),
             radial-gradient(
                 ellipse 80% 50% at 80% 110%,
-                rgba(45, 212, 191, 0.06),
+                rgba(176, 28, 27, 0.06),
                 transparent
             );
     }
     ::selection {
-        background: rgba(52, 211, 153, 0.3);
+        background: rgba(229, 35, 33, 0.3);
         color: #ffffff;
     }
 }
@@ -185,9 +182,9 @@
     .neon-text {
         background: linear-gradient(
             135deg,
-            #34d399 0%,
-            #6ee7b7 55%,
-            #2dd4bf 100%
+            #b01c1b 0%,
+            #e52321 55%,
+            #f25a58 100%
         );
         -webkit-background-clip: text;
         background-clip: text;
@@ -195,8 +192,8 @@
     }
     .glow-green {
         box-shadow:
-            0 0 24px rgba(52, 211, 153, 0.18),
-            0 0 64px rgba(52, 211, 153, 0.06);
+            0 0 24px rgba(229, 35, 33, 0.18),
+            0 0 64px rgba(229, 35, 33, 0.06);
     }
     .glow-card {
         box-shadow:
@@ -233,8 +230,8 @@
             linear-gradient(var(--card), var(--card)) padding-box,
             linear-gradient(
                     135deg,
-                    rgba(52, 211, 153, 0.4),
-                    rgba(45, 212, 191, 0.35)
+                    rgba(229, 35, 33, 0.4),
+                    rgba(176, 28, 27, 0.35)
                 )
                 border-box;
         border: 1px solid transparent;
@@ -246,14 +243,14 @@
         height: 8px;
     }
     ::-webkit-scrollbar-track {
-        background: #0a0a0f;
+        background: #0a0a0a;
     }
     ::-webkit-scrollbar-thumb {
         background: rgba(255, 255, 255, 0.12);
         border-radius: 8px;
     }
     ::-webkit-scrollbar-thumb:hover {
-        background: rgba(52, 211, 153, 0.4);
+        background: rgba(229, 35, 33, 0.4);
     }
 }
 
@@ -277,7 +274,7 @@ body:has(.public-site) {
 }
 
 html:has(.public-site) {
-    scrollbar-color: rgba(11, 11, 12, 0.4) var(--color-bone);
+    scrollbar-color: rgba(0, 0, 0, 0.4) var(--color-bone);
 }
 
 html:has(.public-site) ::-webkit-scrollbar-track {
@@ -285,7 +282,7 @@ html:has(.public-site) ::-webkit-scrollbar-track {
 }
 
 html:has(.public-site) ::-webkit-scrollbar-thumb {
-    background: rgba(11, 11, 12, 0.35);
+    background: rgba(0, 0, 0, 0.35);
 }
 
 html:has(.public-site) ::-webkit-scrollbar-thumb:hover {
@@ -328,12 +325,12 @@ html:has(.public-site) ::-webkit-scrollbar-thumb:hover {
     background-image:
         repeating-linear-gradient(
             90deg,
-            rgba(244, 240, 230, 0.09) 0 1px,
+            rgba(255, 255, 255, 0.09) 0 1px,
             transparent 1px 72px
         ),
         repeating-linear-gradient(
             0deg,
-            rgba(244, 240, 230, 0.09) 0 1px,
+            rgba(255, 255, 255, 0.09) 0 1px,
             transparent 1px 72px
         );
 }
@@ -342,19 +339,19 @@ html:has(.public-site) ::-webkit-scrollbar-thumb:hover {
     background-image:
         repeating-linear-gradient(
             90deg,
-            rgba(11, 11, 12, 0.08) 0 1px,
+            rgba(0, 0, 0, 0.08) 0 1px,
             transparent 1px 64px
         ),
         repeating-linear-gradient(
             0deg,
-            rgba(11, 11, 12, 0.08) 0 1px,
+            rgba(0, 0, 0, 0.08) 0 1px,
             transparent 1px 64px
         );
 }
 
 .halftone {
     background-image: radial-gradient(
-        rgba(11, 11, 12, 0.2) 0.75px,
+        rgba(0, 0, 0, 0.2) 0.75px,
         transparent 0.75px
     );
     background-size: 5px 5px;
@@ -362,7 +359,7 @@ html:has(.public-site) ::-webkit-scrollbar-thumb:hover {
 
 .halftone-light {
     background-image: radial-gradient(
-        rgba(244, 240, 230, 0.22) 0.75px,
+        rgba(255, 255, 255, 0.22) 0.75px,
         transparent 0.75px
     );
     background-size: 5px 5px;
@@ -372,7 +369,7 @@ html:has(.public-site) ::-webkit-scrollbar-thumb:hover {
     background-image: repeating-linear-gradient(
         -45deg,
         transparent 0 10px,
-        rgba(11, 11, 12, 0.18) 10px 12px
+        rgba(0, 0, 0, 0.18) 10px 12px
     );
 }
 
@@ -380,12 +377,12 @@ html:has(.public-site) ::-webkit-scrollbar-thumb:hover {
 
 .text-outline-bone {
     color: transparent;
-    -webkit-text-stroke: 1.5px rgba(244, 240, 230, 0.55);
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.55);
 }
 
 .text-outline-ink {
     color: transparent;
-    -webkit-text-stroke: 1.5px rgba(11, 11, 12, 0.55);
+    -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.55);
 }
 
 .hard-shadow-ink {
@@ -450,7 +447,7 @@ html:has(.public-site) ::-webkit-scrollbar-thumb:hover {
 }
 
 .ticket-dash {
-    border-top: 1px dashed rgba(11, 11, 12, 0.35);
+    border-top: 1px dashed rgba(0, 0, 0, 0.35);
 }
 
 /* Signature graphique ------------------------------------------------ */

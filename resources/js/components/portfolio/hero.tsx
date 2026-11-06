@@ -306,9 +306,13 @@ export function Hero({
                                                 Diallo
                                             </p>
                                         </div>
-                                        <span className="flex h-16 w-16 shrink-0 items-center justify-center bg-violet text-bone">
-                                            <MidMark className="h-5 w-auto" />
-                                        </span>
+                                        <img
+                                            src="/avatar.svg"
+                                            alt={`Portrait de ${profile.name}`}
+                                            className="h-24 w-16 shrink-0 border-2 border-ink bg-white object-contain"
+                                            loading="eager"
+                                            decoding="async"
+                                        />
                                     </div>
 
                                     <div className="mt-4 flex items-center gap-3">
