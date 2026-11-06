@@ -6,6 +6,14 @@
 
 ---
 
+## Déploiement sur Render
+
+L'application Laravel nécessite PHP ; le service Render doit utiliser l'environnement **Docker** (fichier `Dockerfile` à la racine), et non le runtime Node/Bun. Le conteneur construit les assets Vite, lance Apache et applique les migrations au démarrage.
+
+Dans les variables d'environnement Render, définir `APP_KEY` avec une clé générée localement par `php artisan key:generate --show`. La base SQLite incluse dans le conteneur est éphémère : utiliser une base de données persistante pour conserver les données entre les déploiements.
+
+---
+
 ## 1. PRD
 
 ### Objectifs
