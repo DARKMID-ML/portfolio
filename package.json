@@ -6,6 +6,7 @@
         "build": "vite build",
         "build:ssr": "vite build --ssr",
         "dev": "vp dev",
+        "start": "php artisan serve --host=0.0.0.0 --port=${PORT:-8000}",
         "check": "vp check",
         "check:fix": "vp check --fix",
         "types:check": "tsc --noEmit"
