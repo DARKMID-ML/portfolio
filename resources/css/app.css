@@ -1,0 +1,563 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+
+@custom-variant dark (&:is(.dark *));
+
+/* Anybody is used only by the public identity. It is variable on the width
+   axis, which gives the display type its poster-like proportions. */
+@font-face {
+    font-family: 'Anybody';
+    font-style: normal;
+    font-weight: 800;
+    font-stretch: 75% 125%;
+    font-display: swap;
+    src: url('../fonts/anybody-800-latin.woff2') format('woff2');
+    unicode-range:
+        U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+        U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+        U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Anybody';
+    font-style: normal;
+    font-weight: 800;
+    font-stretch: 75% 125%;
+    font-display: swap;
+    src: url('../fonts/anybody-800-latin-ext.woff2') format('woff2');
+    unicode-range:
+        U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+        U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+        U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@theme inline {
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
+    --font-display: 'Anybody', var(--font-bricolage);
+    --font-editorial: 'Anybody', var(--font-bricolage);
+    --font-code: var(--font-dm-mono);
+    /* Identité « MID / 223 » — violet profond, lime acide, vert forêt. */
+    --color-bone: #f4f0e6;
+    --color-ink: #0b0b0c;
+    --color-violet: #341b86;
+    --color-lime: #d6ff3f;
+    --color-pine: #0e5a46;
+    --color-lilac: #e6def8;
+
+    /* Anciens noms conservés pour les dégradés de projets déjà en base.
+       Les valeurs pointent vers la nouvelle palette. */
+    --color-clay: #341b86;
+    --color-cobalt: #d6ff3f;
+    --color-moss: #0e5a46;
+    --color-soot: #0b0b0c;
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-neon-green: var(--neon-green);
+    --color-neon-teal: var(--neon-teal);
+    --radius-sm: calc(var(--radius) - 4px);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+    --radius: 0.75rem;
+    /* ----- Polices (remplace next/font Geist) ----- */
+    --font-geist-sans:
+        'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
+    --font-geist-mono:
+        ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas,
+        'Liberation Mono', monospace;
+    /* ----- Thème Dark Tech permanent ----- */
+    --neon-green: #34d399;
+    --neon-teal: #2dd4bf;
+    --background: #0a0a0f;
+    --foreground: #e8eaf2;
+    --card: rgba(255, 255, 255, 0.04);
+    --card-foreground: #e8eaf2;
+    --popover: #12121a;
+    --popover-foreground: #e8eaf2;
+    --primary: #34d399;
+    --primary-foreground: #0a0a0f;
+    --secondary: rgba(255, 255, 255, 0.06);
+    --secondary-foreground: #e8eaf2;
+    --muted: rgba(255, 255, 255, 0.06);
+    --muted-foreground: #8b90a7;
+    --accent: rgba(52, 211, 153, 0.12);
+    --accent-foreground: #34d399;
+    --destructive: #f43f5e;
+    --border: rgba(255, 255, 255, 0.09);
+    --input: rgba(255, 255, 255, 0.1);
+    --ring: rgba(52, 211, 153, 0.5);
+    --chart-1: #34d399;
+    --chart-2: #2dd4bf;
+    --chart-3: #34d399;
+    --chart-4: #fbbf24;
+    --chart-5: #f43f5e;
+    --sidebar: #0f0f16;
+    --sidebar-foreground: #e8eaf2;
+    --sidebar-primary: #34d399;
+    --sidebar-primary-foreground: #0a0a0f;
+    --sidebar-accent: rgba(255, 255, 255, 0.06);
+    --sidebar-accent-foreground: #e8eaf2;
+    --sidebar-border: rgba(255, 255, 255, 0.09);
+    --sidebar-ring: rgba(52, 211, 153, 0.5);
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+    html {
+        scroll-behavior: smooth;
+    }
+    body {
+        @apply bg-background text-foreground;
+        background-image:
+            radial-gradient(
+                ellipse 80% 50% at 20% -10%,
+                rgba(52, 211, 153, 0.07),
+                transparent
+            ),
+            radial-gradient(
+                ellipse 80% 50% at 80% 110%,
+                rgba(45, 212, 191, 0.06),
+                transparent
+            );
+    }
+    ::selection {
+        background: rgba(52, 211, 153, 0.3);
+        color: #ffffff;
+    }
+}
+
+@layer utilities {
+    /* ----- Glassmorphism ----- */
+    .glass {
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+    }
+    .glass-strong {
+        background: rgba(18, 18, 26, 0.75);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    /* ----- Effets néon ----- */
+    .neon-text {
+        background: linear-gradient(
+            135deg,
+            #34d399 0%,
+            #6ee7b7 55%,
+            #2dd4bf 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    .glow-green {
+        box-shadow:
+            0 0 24px rgba(52, 211, 153, 0.18),
+            0 0 64px rgba(52, 211, 153, 0.06);
+    }
+    .glow-card {
+        box-shadow:
+            0 8px 40px rgba(0, 0, 0, 0.45),
+            0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+    }
+
+    /* ----- Grille décorative ----- */
+    .grid-pattern {
+        background-image:
+            linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+            linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.035) 1px,
+                transparent 1px
+            );
+        background-size: 48px 48px;
+        mask-image: radial-gradient(
+            ellipse 70% 60% at 50% 40%,
+            black 30%,
+            transparent 75%
+        );
+        -webkit-mask-image: radial-gradient(
+            ellipse 70% 60% at 50% 40%,
+            black 30%,
+            transparent 75%
+        );
+    }
+
+    /* ----- Dégradé de bordure ----- */
+    .gradient-border {
+        position: relative;
+        background:
+            linear-gradient(var(--card), var(--card)) padding-box,
+            linear-gradient(
+                    135deg,
+                    rgba(52, 211, 153, 0.4),
+                    rgba(45, 212, 191, 0.35)
+                )
+                border-box;
+        border: 1px solid transparent;
+    }
+
+    /* ----- Scrollbar personnalisée ----- */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #0a0a0f;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: 8px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(52, 211, 153, 0.4);
+    }
+}
+
+/* ============================================================
+   Portfolio public — « MID / 223 », carnet de terrain
+   ============================================================ */
+
+.public-site {
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    overflow: clip;
+    background-color: var(--color-bone);
+    color: var(--color-ink);
+    font-family: var(--font-geist-sans);
+}
+
+body:has(.public-site) {
+    background-color: var(--color-bone);
+    background-image: none;
+}
+
+html:has(.public-site) {
+    scrollbar-color: rgba(11, 11, 12, 0.4) var(--color-bone);
+}
+
+html:has(.public-site) ::-webkit-scrollbar-track {
+    background: var(--color-bone);
+}
+
+html:has(.public-site) ::-webkit-scrollbar-thumb {
+    background: rgba(11, 11, 12, 0.35);
+}
+
+html:has(.public-site) ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-violet);
+}
+
+.public-site ::selection {
+    background: var(--color-lime);
+    color: var(--color-ink);
+}
+
+.public-site :is(a, button, input, textarea, select):focus-visible {
+    outline: 3px solid var(--color-lime);
+    outline-offset: 3px;
+}
+
+.public-site section {
+    scroll-margin-top: 5rem;
+}
+
+.public-site .font-display {
+    font-variation-settings: 'wdth' 112;
+}
+
+.public-site .display-xwide {
+    font-variation-settings: 'wdth' 125;
+}
+
+.public-site .display-compact {
+    font-variation-settings: 'wdth' 82;
+}
+
+.public-site .display-normal {
+    font-variation-settings: 'wdth' 100;
+}
+
+/* Grilles de terrain -------------------------------------------------- */
+
+.weave-grid {
+    background-image:
+        repeating-linear-gradient(
+            90deg,
+            rgba(244, 240, 230, 0.09) 0 1px,
+            transparent 1px 72px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            rgba(244, 240, 230, 0.09) 0 1px,
+            transparent 1px 72px
+        );
+}
+
+.weave-grid-ink {
+    background-image:
+        repeating-linear-gradient(
+            90deg,
+            rgba(11, 11, 12, 0.08) 0 1px,
+            transparent 1px 64px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            rgba(11, 11, 12, 0.08) 0 1px,
+            transparent 1px 64px
+        );
+}
+
+.halftone {
+    background-image: radial-gradient(
+        rgba(11, 11, 12, 0.2) 0.75px,
+        transparent 0.75px
+    );
+    background-size: 5px 5px;
+}
+
+.halftone-light {
+    background-image: radial-gradient(
+        rgba(244, 240, 230, 0.22) 0.75px,
+        transparent 0.75px
+    );
+    background-size: 5px 5px;
+}
+
+.stripes-diagonal {
+    background-image: repeating-linear-gradient(
+        -45deg,
+        transparent 0 10px,
+        rgba(11, 11, 12, 0.18) 10px 12px
+    );
+}
+
+/* Encres et découpes ------------------------------------------------ */
+
+.text-outline-bone {
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(244, 240, 230, 0.55);
+}
+
+.text-outline-ink {
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(11, 11, 12, 0.55);
+}
+
+.hard-shadow-ink {
+    box-shadow: 10px 10px 0 0 var(--color-ink);
+}
+
+.hard-shadow-lime {
+    box-shadow: 10px 10px 0 0 var(--color-lime);
+}
+
+.hard-shadow-violet {
+    box-shadow: 10px 10px 0 0 var(--color-violet);
+}
+
+.hard-shadow-pine {
+    box-shadow: 10px 10px 0 0 var(--color-pine);
+}
+
+/* Étiquettes, billets et perforations ------------------------------- */
+
+.label-block {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    background: var(--color-ink);
+    color: var(--color-bone);
+    padding: 0.55rem 0.75rem;
+    font-family: var(--font-dm-mono);
+    font-size: 0.62rem;
+    line-height: 1;
+    letter-spacing: 0.1em;
+}
+
+.perforation {
+    border-top: 1px dashed currentColor;
+    opacity: 0.45;
+}
+
+.ticket {
+    position: relative;
+    isolation: isolate;
+}
+
+.ticket::before,
+.ticket::after {
+    content: '';
+    position: absolute;
+    top: 2.75rem;
+    z-index: 2;
+    width: 1.15rem;
+    height: 1.15rem;
+    border-radius: 9999px;
+    background: var(--ticket-notch, var(--color-ink));
+}
+
+.ticket::before {
+    left: -0.6rem;
+}
+
+.ticket::after {
+    right: -0.6rem;
+}
+
+.ticket-dash {
+    border-top: 1px dashed rgba(11, 11, 12, 0.35);
+}
+
+/* Signature graphique ------------------------------------------------ */
+
+.mid-mark {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.mid-mark rect {
+    shape-rendering: crispEdges;
+}
+
+.barcode {
+    background-image: repeating-linear-gradient(
+        90deg,
+        currentColor 0 1px,
+        transparent 1px 4px,
+        currentColor 4px 5px,
+        transparent 5px 9px,
+        currentColor 9px 12px,
+        transparent 12px 14px,
+        currentColor 14px 15px,
+        transparent 15px 21px
+    );
+}
+
+/* Mouvement ----------------------------------------------------------- */
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+    will-change: transform;
+}
+
+.marquee-track:hover {
+    animation-play-state: paused;
+}
+
+.animate-spin-slow {
+    animation: spin-slow 28s linear infinite;
+}
+
+.ping-soft {
+    animation: ping-soft 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.scan-line {
+    animation: scan-line 7s linear infinite;
+}
+
+@keyframes marquee {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+    to {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
+@keyframes spin-slow {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes ping-soft {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    80%,
+    100% {
+        transform: scale(2.4);
+        opacity: 0;
+    }
+}
+
+@keyframes scan-line {
+    0% {
+        transform: translateY(-20%);
+        opacity: 0;
+    }
+    10%,
+    85% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(420%);
+        opacity: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .marquee-track,
+    .animate-spin-slow,
+    .ping-soft,
+    .scan-line {
+        animation: none;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .public-site * {
+        scroll-behavior: auto !important;
+    }
+}
