@@ -1,4 +1,5 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
+import { m } from 'framer-motion';
 import { ArrowUpRight, Download, Menu, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { MidMark } from '@/components/portfolio/mid-mark';
@@ -52,7 +53,7 @@ export function Navbar({ profile }: { profile: Profile }) {
 
     return (
         <>
-            <motion.header
+            <m.header
                 className={cn(
                     'fixed inset-x-0 top-0 z-50 border-b transition-colors duration-500',
                     scrolled || open
@@ -165,11 +166,11 @@ export function Navbar({ profile }: { profile: Profile }) {
                         <Menu className="h-5 w-5" aria-hidden="true" />
                     </button>
                 </nav>
-            </motion.header>
+            </m.header>
 
             <AnimatePresence>
                 {open && (
-                    <motion.div
+                    <m.div
                         className="fixed inset-0 z-[120] flex flex-col bg-ink text-bone"
                         initial={{ x: '100%' }}
                         animate={{ x: 0 }}
@@ -208,7 +209,7 @@ export function Navbar({ profile }: { profile: Profile }) {
                         >
                             <ul>
                                 {navLinks.map((link, index) => (
-                                    <motion.li
+                                    <m.li
                                         key={link.href}
                                         initial={{ opacity: 0, x: 24 }}
                                         animate={{ opacity: 1, x: 0 }}
@@ -237,12 +238,12 @@ export function Navbar({ profile }: { profile: Profile }) {
                                                 )}
                                             </span>
                                         </a>
-                                    </motion.li>
+                                    </m.li>
                                 ))}
                             </ul>
                         </nav>
 
-                        <motion.div
+                        <m.div
                             className="relative border-t border-bone/20 bg-lime px-5 py-6 text-ink sm:px-8"
                             initial={{ opacity: 0, y: 16 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -273,8 +274,8 @@ export function Navbar({ profile }: { profile: Profile }) {
                                     </a>
                                 ) : null}
                             </div>
-                        </motion.div>
-                    </motion.div>
+                        </m.div>
+                    </m.div>
                 )}
             </AnimatePresence>
         </>

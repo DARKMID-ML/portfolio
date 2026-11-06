@@ -1,9 +1,5 @@
-import {
-    motion,
-    useMotionValue,
-    useReducedMotion,
-    useSpring,
-} from 'framer-motion';
+import { useMotionValue, useReducedMotion, useSpring } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useRef, type ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -40,7 +36,7 @@ export function Magnetic({
     };
 
     return (
-        <motion.div
+        <m.div
             ref={ref}
             className={cn('inline-block', className)}
             style={{ x: springX, y: springY }}
@@ -49,6 +45,6 @@ export function Magnetic({
             onBlur={reset}
         >
             {children}
-        </motion.div>
+        </m.div>
     );
 }

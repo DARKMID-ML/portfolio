@@ -1,9 +1,5 @@
-import {
-    motion,
-    useReducedMotion,
-    useScroll,
-    useTransform,
-} from 'framer-motion';
+import { useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { m } from 'framer-motion';
 import {
     ArrowDown,
     ArrowUpRight,
@@ -100,16 +96,16 @@ export function Hero({
                 className="pointer-events-none absolute top-[20%] right-[-8%] h-[26rem] w-[26rem] rounded-full border border-dashed border-bone/15 sm:h-[34rem] sm:w-[34rem]"
                 aria-hidden="true"
             />
-            <motion.span
+            <m.span
                 className="text-outline-bone pointer-events-none absolute right-[-1rem] bottom-[9%] font-display text-[27vw] leading-none font-extrabold select-none lg:right-[-2rem]"
                 style={reduceMotion ? undefined : { y: markY }}
                 aria-hidden="true"
             >
                 223
-            </motion.span>
+            </m.span>
 
             <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col px-5 pt-24 pb-6 sm:px-8 sm:pt-28">
-                <motion.div
+                <m.div
                     className="flex flex-wrap items-center justify-between gap-3 border-b border-bone/25 pb-3 font-code text-[9px] tracking-[0.1em] text-bone/65"
                     initial={false}
                     animate={{ opacity: introReady ? 1 : 0 }}
@@ -124,10 +120,10 @@ export function Hero({
                         {profile.location} · 12.6392°N 8.0029°W · {localTime}{' '}
                         GMT
                     </span>
-                </motion.div>
+                </m.div>
 
                 <div className="grid flex-1 items-center gap-12 py-10 lg:grid-cols-[1.3fr_0.7fr] lg:gap-10 lg:py-12">
-                    <motion.div
+                    <m.div
                         style={
                             reduceMotion
                                 ? undefined
@@ -135,7 +131,7 @@ export function Hero({
                         }
                         className="relative"
                     >
-                        <motion.div
+                        <m.div
                             className="mb-6 inline-flex items-center gap-2.5 bg-ink px-3 py-2 font-code text-[9px] tracking-[0.08em] text-bone"
                             {...reveal(0.08)}
                         >
@@ -144,7 +140,7 @@ export function Hero({
                                 <span className="relative inline-flex h-2 w-2 rounded-full bg-lime" />
                             </span>
                             {profile.availabilityText}
-                        </motion.div>
+                        </m.div>
 
                         <h1 className="font-display text-[clamp(3.35rem,10.9vw,9.5rem)] leading-[0.77] font-extrabold tracking-[-0.07em]">
                             <span className="block">
@@ -165,7 +161,7 @@ export function Hero({
                                     wordClassName="uppercase"
                                 />
                             </span>
-                            <motion.span
+                            <m.span
                                 className="relative mt-1 inline-block max-w-full overflow-hidden bg-lime"
                                 initial={false}
                                 animate={{
@@ -188,10 +184,10 @@ export function Hero({
                                         wordClassName="uppercase"
                                     />
                                 </span>
-                            </motion.span>
+                            </m.span>
                         </h1>
 
-                        <motion.div
+                        <m.div
                             className="mt-7 max-w-[38rem] border-l-2 border-lime pl-4"
                             {...reveal(0.58)}
                         >
@@ -201,9 +197,9 @@ export function Hero({
                             <p className="mt-3 font-code text-[9px] leading-relaxed tracking-[0.08em] text-lime">
                                 {profile.role} · {profile.education}
                             </p>
-                        </motion.div>
+                        </m.div>
 
-                        <motion.div
+                        <m.div
                             className="mt-7 flex flex-wrap items-center gap-2.5"
                             {...reveal(0.7)}
                         >
@@ -239,9 +235,9 @@ export function Hero({
                                     aria-hidden="true"
                                 />
                             </a>
-                        </motion.div>
+                        </m.div>
 
-                        <motion.div
+                        <m.div
                             className="mt-7 flex items-center gap-2"
                             {...reveal(0.82)}
                         >
@@ -264,14 +260,14 @@ export function Hero({
                                     />
                                 </a>
                             ))}
-                        </motion.div>
-                    </motion.div>
+                        </m.div>
+                    </m.div>
 
-                    <motion.div
+                    <m.div
                         className="relative mx-auto w-full max-w-[390px] lg:mr-0"
                         style={reduceMotion ? undefined : { y: cardY }}
                     >
-                        <motion.div
+                        <m.div
                             initial={false}
                             animate={{
                                 opacity: introReady ? 1 : 0,
@@ -377,11 +373,11 @@ export function Hero({
                                     </span>
                                 </div>
                             </div>
-                        </motion.div>
-                    </motion.div>
+                        </m.div>
+                    </m.div>
                 </div>
 
-                <motion.div
+                <m.div
                     className="flex flex-wrap items-center justify-between gap-3 border-t border-bone/25 pt-3 font-code text-[9px] tracking-[0.1em] text-bone/65"
                     initial={false}
                     animate={{ opacity: introReady ? 1 : 0 }}
@@ -398,7 +394,7 @@ export function Hero({
                         HTML / CSS / PYTHON · BUREAUTIQUE · SUPPORT
                     </span>
                     <span>01 / 06</span>
-                </motion.div>
+                </m.div>
             </div>
         </section>
     );

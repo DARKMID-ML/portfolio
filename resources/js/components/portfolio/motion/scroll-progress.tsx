@@ -1,10 +1,10 @@
 import {
-    motion,
     useMotionValueEvent,
     useReducedMotion,
     useScroll,
     useSpring,
 } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useState } from 'react';
 
 export function ScrollProgress() {
@@ -29,7 +29,7 @@ export function ScrollProgress() {
                 className="fixed inset-x-0 bottom-0 z-[96] h-[3px] bg-ink/20 min-[1536px]:hidden"
                 aria-hidden="true"
             >
-                <motion.div
+                <m.div
                     className="h-full origin-left bg-lime"
                     style={{ scaleX: progress }}
                 />
@@ -44,7 +44,7 @@ export function ScrollProgress() {
                         DOSSIER / 223
                     </span>
                     <div className="relative h-28 w-[3px] overflow-hidden bg-ink/20 lg:h-36">
-                        <motion.div
+                        <m.div
                             className="absolute inset-0 origin-top bg-lime"
                             style={{
                                 scaleY: reduceMotion

@@ -1,9 +1,5 @@
-import {
-    motion,
-    useReducedMotion,
-    useScroll,
-    useTransform,
-} from 'framer-motion';
+import { useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import { m } from 'framer-motion';
 import { ArrowUpRight, Github } from 'lucide-react';
 import { useRef } from 'react';
 import { MidMark } from '@/components/portfolio/mid-mark';
@@ -65,7 +61,7 @@ export function Projects({ projects }: { projects: Project[] }) {
                 ) : (
                     <div className="mt-12 grid items-stretch gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-8">
                         <Reveal y={34}>
-                            <motion.div
+                            <m.div
                                 style={
                                     reduceMotion ? undefined : { y: previewY }
                                 }
@@ -138,7 +134,7 @@ export function Projects({ projects }: { projects: Project[] }) {
                                     className="absolute -top-2 right-8 h-6 w-20 -rotate-6 bg-lilac/90"
                                     aria-hidden="true"
                                 />
-                            </motion.div>
+                            </m.div>
                         </Reveal>
 
                         <Reveal delay={0.12} y={34}>
@@ -212,7 +208,7 @@ export function Projects({ projects }: { projects: Project[] }) {
                 {rest.length > 0 ? (
                     <div className="mt-12 border-t-2 border-ink">
                         {rest.map((project, index) => (
-                            <motion.article
+                            <m.article
                                 key={project.id}
                                 initial={{ opacity: 0, y: 16 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -233,7 +229,7 @@ export function Projects({ projects }: { projects: Project[] }) {
                                 <p className="text-[12px] leading-relaxed text-ink/65">
                                     {project.description}
                                 </p>
-                            </motion.article>
+                            </m.article>
                         ))}
                     </div>
                 ) : null}

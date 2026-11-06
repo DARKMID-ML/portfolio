@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import {
     AppWindow,
     ArrowUpRight,
@@ -95,7 +95,7 @@ export function Services({
                                 ticketStyles[0];
 
                             return (
-                                <motion.article
+                                <m.article
                                     key={service.id}
                                     initial={{
                                         opacity: 0,
@@ -181,7 +181,7 @@ export function Services({
                                         <span>BAMAKO / À DISTANCE</span>
                                         <span className="h-1.5 w-1.5 bg-lime" />
                                     </div>
-                                </motion.article>
+                                </m.article>
                             );
                         })}
                     </div>

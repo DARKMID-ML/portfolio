@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Layout, Server, Sparkles, Wrench } from 'lucide-react';
 import { EASE_OUT, Reveal } from '@/components/portfolio/motion/reveal';
 import { SectionHeading } from '@/components/portfolio/section-heading';
@@ -98,7 +98,7 @@ export function Skills({ categories }: { categories: SkillCategory[] }) {
                                 rowStyles[1];
 
                             return (
-                                <motion.article
+                                <m.article
                                     key={category.id}
                                     initial={{
                                         opacity: 0,
@@ -149,7 +149,7 @@ export function Skills({ categories }: { categories: SkillCategory[] }) {
                                             </li>
                                         ))}
                                     </ul>
-                                </motion.article>
+                                </m.article>
                             );
                         })}
                     </div>

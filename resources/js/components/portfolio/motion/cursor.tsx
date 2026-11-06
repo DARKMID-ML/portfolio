@@ -1,9 +1,5 @@
-import {
-    motion,
-    useMotionValue,
-    useReducedMotion,
-    useSpring,
-} from 'framer-motion';
+import { useMotionValue, useReducedMotion, useSpring } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 export function Cursor() {
@@ -52,12 +48,12 @@ export function Cursor() {
 
     return (
         <>
-            <motion.div
+            <m.div
                 className="cursor-dot pointer-events-none fixed top-0 left-0 z-[100] h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-clay mix-blend-difference"
                 style={{ x, y }}
                 aria-hidden="true"
             />
-            <motion.div
+            <m.div
                 className="cursor-ring pointer-events-none fixed top-0 left-0 z-[100] h-9 w-9 -translate-x-1/2 -translate-y-1/2 rounded-full border border-clay/70 mix-blend-difference"
                 style={{ x: ringX, y: ringY }}
                 animate={{

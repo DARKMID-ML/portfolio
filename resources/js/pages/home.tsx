@@ -1,4 +1,5 @@
 import { Head } from '@inertiajs/react';
+import { domAnimation, LazyMotion } from 'framer-motion';
 import { useCallback, useState } from 'react';
 import { About } from '@/components/portfolio/about';
 import { Contact } from '@/components/portfolio/contact';
@@ -26,36 +27,38 @@ export default function Home({
     const description = `${profile.tagline} Portfolio de ${profile.name}, ${profile.role.toLowerCase()} basé à ${profile.location}.`;
 
     return (
-        <div className="public-site">
-            <Intro onDone={handleIntroDone} name={profile.name} />
-            <ScrollProgress />
+        <LazyMotion features={domAnimation}>
+            <div className="public-site">
+                <Intro onDone={handleIntroDone} name={profile.name} />
+                <ScrollProgress />
 
-            <Head title={title}>
-                <meta name="description" content={description} />
-                <meta
-                    name="keywords"
-                    content="portfolio Bamako, développeur web junior Mali, informatique de gestion, stage informatique Bamako, HTML CSS Python"
-                />
-                <meta name="author" content={profile.name} />
-                <meta property="og:type" content="website" />
-                <meta property="og:locale" content="fr_FR" />
-                <meta property="og:title" content={title} />
-                <meta property="og:description" content={description} />
-            </Head>
+                <Head title={title}>
+                    <meta name="description" content={description} />
+                    <meta
+                        name="keywords"
+                        content="portfolio Bamako, développeur web junior Mali, informatique de gestion, stage informatique Bamako, HTML CSS Python"
+                    />
+                    <meta name="author" content={profile.name} />
+                    <meta property="og:type" content="website" />
+                    <meta property="og:locale" content="fr_FR" />
+                    <meta property="og:title" content={title} />
+                    <meta property="og:description" content={description} />
+                </Head>
 
-            <Navbar profile={profile} />
+                <Navbar profile={profile} />
 
-            <main className="relative flex-1">
-                <Hero profile={profile} introReady={introReady} />
-                <About profile={profile} timeline={timeline} />
-                <Skills categories={skillCategories} />
-                <Projects projects={projects} />
-                <Services services={services} profile={profile} />
-                <Contact profile={profile} />
-            </main>
+                <main className="relative flex-1">
+                    <Hero profile={profile} introReady={introReady} />
+                    <About profile={profile} timeline={timeline} />
+                    <Skills categories={skillCategories} />
+                    <Projects projects={projects} />
+                    <Services services={services} profile={profile} />
+                    <Contact profile={profile} />
+                </main>
 
-            <Footer profile={profile} />
-            <Toaster />
-        </div>
+                <Footer profile={profile} />
+                <Toaster />
+            </div>
+        </LazyMotion>
     );
 }

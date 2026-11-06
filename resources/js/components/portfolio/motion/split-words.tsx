@@ -1,4 +1,5 @@
-import { motion, useReducedMotion } from 'framer-motion';
+import { useReducedMotion } from 'framer-motion';
+import { m } from 'framer-motion';
 import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 import { EASE_OUT } from './reveal';
@@ -30,7 +31,7 @@ export function SplitWords({
     }
 
     return (
-        <motion.span
+        <m.span
             className={cn('inline', className)}
             aria-label={text}
             initial="hidden"
@@ -51,7 +52,7 @@ export function SplitWords({
                     className="inline-block overflow-hidden pb-[0.08em] align-bottom"
                     aria-hidden="true"
                 >
-                    <motion.span
+                    <m.span
                         className={cn('inline-block', wordClassName)}
                         variants={{
                             hidden: { y: '115%', rotate: 3 },
@@ -67,10 +68,10 @@ export function SplitWords({
                     >
                         {word}
                         {index < words.length - 1 ? '\u00A0' : ''}
-                    </motion.span>
+                    </m.span>
                 </span>
             ))}
-        </motion.span>
+        </m.span>
     );
 }
 
@@ -91,7 +92,7 @@ export function LineReveal({
 
     return (
         <span className={cn('block overflow-hidden', className)}>
-            <motion.span
+            <m.span
                 className="block"
                 initial={{ y: '110%' }}
                 whileInView={{ y: '0%' }}
@@ -99,7 +100,7 @@ export function LineReveal({
                 transition={{ duration: 0.9, delay, ease: EASE_OUT }}
             >
                 {children}
-            </motion.span>
+            </m.span>
         </span>
     );
 }

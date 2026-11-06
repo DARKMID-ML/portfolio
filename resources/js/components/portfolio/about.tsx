@@ -1,4 +1,5 @@
-import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion';
+import { useReducedMotion, useScroll, useSpring } from 'framer-motion';
+import { m } from 'framer-motion';
 import {
     ArrowUpRight,
     BadgeCheck,
@@ -185,7 +186,7 @@ export function About({
                     <div>
                         <RevealList className="space-y-5">
                             {profile.bio.map((paragraph, index) => (
-                                <motion.p
+                                <m.p
                                     key={index}
                                     variants={{
                                         hidden: { opacity: 0, y: 22 },
@@ -205,7 +206,7 @@ export function About({
                                     }
                                 >
                                     {paragraph}
-                                </motion.p>
+                                </m.p>
                             ))}
                         </RevealList>
 
@@ -257,7 +258,7 @@ export function About({
                             className="absolute top-[0.55rem] right-0 left-0 hidden h-[2px] bg-ink/15 md:block"
                             aria-hidden="true"
                         />
-                        <motion.span
+                        <m.span
                             className="absolute top-[0.55rem] right-0 left-0 hidden h-[2px] origin-left bg-violet md:block"
                             style={
                                 reduceMotion
@@ -268,7 +269,7 @@ export function About({
                         />
 
                         {timeline.map((item, index) => (
-                            <motion.li
+                            <m.li
                                 key={item.id}
                                 initial={
                                     reduceMotion ? false : { opacity: 0, y: 22 }
@@ -308,7 +309,7 @@ export function About({
                                         </li>
                                     ))}
                                 </ul>
-                            </motion.li>
+                            </m.li>
                         ))}
                     </ol>
                 </div>

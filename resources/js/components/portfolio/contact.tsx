@@ -1,4 +1,5 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
+import { m } from 'framer-motion';
 import {
     ArrowUpRight,
     Download,
@@ -165,7 +166,7 @@ export function Contact({ profile }: { profile: Profile }) {
 
                         <div className="mt-2">
                             {channels.map((channel, index) => (
-                                <motion.a
+                                <m.a
                                     key={channel.label}
                                     href={channel.href}
                                     target={
@@ -202,7 +203,7 @@ export function Contact({ profile }: { profile: Profile }) {
                                         className="h-3.5 w-3.5 text-ink/55 transition-colors group-hover:text-violet"
                                         aria-hidden="true"
                                     />
-                                </motion.a>
+                                </m.a>
                             ))}
                         </div>
 
@@ -284,14 +285,14 @@ export function Contact({ profile }: { profile: Profile }) {
                                 </div>
                                 <AnimatePresence>
                                     {sent ? (
-                                        <motion.span
+                                        <m.span
                                             className="absolute top-2 right-3 rotate-[-8deg] border-2 border-violet px-2 py-1 font-code text-[9px] tracking-[0.08em] text-violet"
                                             initial={{ opacity: 0, scale: 1.4 }}
                                             animate={{ opacity: 1, scale: 1 }}
                                             exit={{ opacity: 0, scale: 0.9 }}
                                         >
                                             ENVOYÉ / 223
-                                        </motion.span>
+                                        </m.span>
                                     ) : null}
                                 </AnimatePresence>
                             </div>

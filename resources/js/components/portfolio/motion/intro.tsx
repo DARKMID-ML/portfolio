@@ -1,14 +1,17 @@
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, useReducedMotion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { MidMark } from '@/components/portfolio/mid-mark';
 
 const INTRO_KEY = 'portfolio-intro';
-const INTRO_DURATION = 1650;
+const INTRO_DURATION = 700;
+const EXIT_DURATION = 0.45;
 const SEGMENTS = 12;
 
 export function Intro({ onDone, name }: { onDone: () => void; name: string }) {
     const reduceMotion = useReducedMotion();
     const finished = useRef(false);
+    const lastSegment = useRef(-1);
     const [visible, setVisible] = useState(() => {
         if (typeof window === 'undefined') {
             return true;
@@ -16,7 +19,7 @@ export function Intro({ onDone, name }: { onDone: () => void; name: string }) {
 
         return window.sessionStorage.getItem(INTRO_KEY) !== 'done';
     });
-    const [progress, setProgress] = useState(0);
+    const [progressSegments, setProgressSegments] = useState(0);
 
     const finish = useCallback(() => {
         if (finished.current) {
@@ -43,20 +46,25 @@ export function Intro({ onDone, name }: { onDone: () => void; name: string }) {
 
         const startedAt = window.performance.now();
         let frame = 0;
+        lastSegment.current = -1;
 
         const tick = () => {
             const elapsed = window.performance.now() - startedAt;
-            const next = Math.min(
-                100,
-                Math.round((elapsed / INTRO_DURATION) * 100),
+            const nextSegment = Math.min(
+                SEGMENTS,
+                Math.floor((elapsed / INTRO_DURATION) * SEGMENTS),
             );
 
-            setProgress(next);
+            if (nextSegment !== lastSegment.current) {
+                lastSegment.current = nextSegment;
+                setProgressSegments(nextSegment);
+            }
 
-            if (next < 100) {
+            if (nextSegment < SEGMENTS) {
                 frame = window.requestAnimationFrame(tick);
             } else {
                 window.sessionStorage.setItem(INTRO_KEY, 'done');
+                finish();
                 setVisible(false);
             }
         };
@@ -66,17 +74,17 @@ export function Intro({ onDone, name }: { onDone: () => void; name: string }) {
         return () => window.cancelAnimationFrame(frame);
     }, [finish, reduceMotion, visible]);
 
-    const filled = Math.round((progress / 100) * SEGMENTS);
+    const progress = Math.round((progressSegments / SEGMENTS) * 100);
 
     return (
         <AnimatePresence onExitComplete={finish}>
             {visible && !reduceMotion && (
-                <motion.div
+                <m.div
                     className="fixed inset-0 z-[200] flex flex-col justify-between overflow-hidden bg-violet px-5 py-6 text-bone sm:px-10 sm:py-8"
                     exit={{
                         y: '-100%',
                         transition: {
-                            duration: 0.85,
+                            duration: EXIT_DURATION,
                             ease: [0.76, 0, 0.24, 1],
                         },
                     }}
@@ -97,7 +105,7 @@ export function Intro({ onDone, name }: { onDone: () => void; name: string }) {
 
                     <div className="relative flex flex-1 items-center">
                         <div className="w-full">
-                            <motion.div
+                            <m.div
                                 className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -125,7 +133,7 @@ export function Intro({ onDone, name }: { onDone: () => void; name: string }) {
                                 <span className="flex h-20 w-20 shrink-0 items-center justify-center bg-lime text-ink">
                                     <MidMark className="h-6 w-auto" />
                                 </span>
-                            </motion.div>
+                            </m.div>
 
                             <div className="mt-12 flex items-end justify-between gap-4">
                                 <div className="flex flex-1 gap-1">
@@ -134,7 +142,7 @@ export function Intro({ onDone, name }: { onDone: () => void; name: string }) {
                                             <span
                                                 key={index}
                                                 className={`h-3 flex-1 transition-colors duration-150 ${
-                                                    index < filled
+                                                    index < progressSegments
                                                         ? 'bg-lime'
                                                         : 'bg-bone/20'
                                                 }`}
@@ -153,7 +161,7 @@ export function Intro({ onDone, name }: { onDone: () => void; name: string }) {
                         <span>DUT INFORMATIQUE DE GESTION · ESCAE 2025</span>
                         <span>CHARGEMENT DE L’ATELIER</span>
                     </div>
-                </motion.div>
+                </m.div>
             )}
         </AnimatePresence>
     );

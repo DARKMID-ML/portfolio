@@ -1,4 +1,5 @@
-import { motion, useReducedMotion } from 'framer-motion';
+import { useReducedMotion } from 'framer-motion';
+import { m } from 'framer-motion';
 import type { ReactNode } from 'react';
 
 export const EASE_OUT = [0.22, 1, 0.36, 1] as const;
@@ -20,7 +21,7 @@ export function Reveal({
     const reduceMotion = useReducedMotion();
 
     return (
-        <motion.div
+        <m.div
             className={className}
             initial={reduceMotion ? false : { opacity: 0, y }}
             whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
@@ -28,7 +29,7 @@ export function Reveal({
             transition={{ duration: 0.8, delay, ease: EASE_OUT }}
         >
             {children}
-        </motion.div>
+        </m.div>
     );
 }
 
@@ -46,7 +47,7 @@ export function RevealList({
     const reduceMotion = useReducedMotion();
 
     return (
-        <motion.div
+        <m.div
             className={className}
             initial={reduceMotion ? false : 'hidden'}
             whileInView={reduceMotion ? undefined : 'visible'}
@@ -62,7 +63,7 @@ export function RevealList({
             }}
         >
             {children}
-        </motion.div>
+        </m.div>
     );
 }
 
@@ -76,7 +77,7 @@ export function RevealItem({
     y?: number;
 }) {
     return (
-        <motion.div
+        <m.div
             className={className}
             variants={{
                 hidden: { opacity: 0, y },
@@ -88,6 +89,6 @@ export function RevealItem({
             }}
         >
             {children}
-        </motion.div>
+        </m.div>
     );
 }

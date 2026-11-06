@@ -1,10 +1,10 @@
 import {
-    motion,
     useMotionValue,
     useReducedMotion,
     useSpring,
     useTransform,
 } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useRef, type ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
@@ -50,7 +50,7 @@ export function TiltCard({
     };
 
     return (
-        <motion.div
+        <m.div
             ref={ref}
             className={cn('[transform-style:preserve-3d]', className)}
             style={{
@@ -64,6 +64,6 @@ export function TiltCard({
             onBlur={reset}
         >
             {children}
-        </motion.div>
+        </m.div>
     );
 }
