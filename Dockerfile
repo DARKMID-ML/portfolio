@@ -54,4 +54,4 @@ ENV APP_ENV=production \
 
 EXPOSE 10000
 
-CMD ["sh", "-c", "sed -ri \"s/Listen 80/Listen ${PORT:-10000}/\" /etc/apache2/ports.conf && sed -ri \"s/:80>/:${PORT:-10000}>/\" /etc/apache2/sites-available/000-default.conf && php artisan migrate --force && exec apache2-foreground"]
+CMD ["sh", "-c", "sed -ri \"s/Listen 80/Listen ${PORT:-10000}/\" /etc/apache2/ports.conf && sed -ri \"s/:80>/:${PORT:-10000}>/\" /etc/apache2/sites-available/000-default.conf && php artisan migrate --force && php artisan db:seed --force && exec apache2-foreground"]

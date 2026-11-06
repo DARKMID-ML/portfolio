@@ -8,9 +8,21 @@
 
 ## Déploiement sur Render
 
-L'application Laravel nécessite PHP ; le service Render doit utiliser l'environnement **Docker** (fichier `Dockerfile` à la racine), et non le runtime Node/Bun. Le conteneur construit les assets Vite, lance Apache et applique les migrations au démarrage.
+L'application Laravel nécessite PHP ; le service Render doit utiliser l'environnement **Docker** (fichier `Dockerfile` à la racine), et non le runtime Node/Bun. Le conteneur construit les assets Vite, applique les migrations et crée/synchronise le compte administrateur à partir des variables d'environnement.
 
-Dans les variables d'environnement Render, définir `APP_KEY` avec une clé générée localement par `php artisan key:generate --show`. La base SQLite incluse dans le conteneur est éphémère : utiliser une base de données persistante pour conserver les données entre les déploiements.
+Configurer dans **Render → Environment** :
+
+| Variable         | Valeur                                                                                |
+| ---------------- | ------------------------------------------------------------------------------------- |
+| `APP_ENV`        | `production`                                                                          |
+| `APP_DEBUG`      | `false`                                                                               |
+| `APP_KEY`        | Clé générée avec `php artisan key:generate --show` (garder secrète)                   |
+| `APP_URL`        | URL HTTPS du service Render                                                           |
+| `ADMIN_NAME`     | Nom affiché dans l'administration                                                     |
+| `ADMIN_EMAIL`    | Adresse utilisée pour se connecter                                                    |
+| `ADMIN_PASSWORD` | Mot de passe unique d'au moins 16 caractères ; générer avec `openssl rand -base64 32` |
+
+Ouvrir `/login` pour accéder au panneau d'administration. Les identifiants sont ceux définis par `ADMIN_EMAIL` et `ADMIN_PASSWORD` ; ils ne sont pas inclus dans le dépôt. La base SQLite incluse dans le conteneur est éphémère : utiliser une base de données et un disque persistants pour conserver les données entre les déploiements.
 
 ---
 

@@ -47,7 +47,7 @@ export default function Dashboard({
             detail: `${stats.totalMessages} message${stats.totalMessages > 1 ? 's' : ''} au total`,
             icon: Mail,
             href: '/admin/messages',
-            accent: 'text-emerald-300 bg-emerald-400/10',
+            accent: 'text-[#d6ff3f] bg-[#d6ff3f]/10',
         },
         {
             label: 'Projets',
@@ -55,7 +55,7 @@ export default function Dashboard({
             detail: 'Fiches publiées ou brouillons',
             icon: FolderKanban,
             href: '/admin/projects',
-            accent: 'text-teal-300 bg-teal-400/10',
+            accent: 'text-[#c8b8ff] bg-[#7658d6]/20',
         },
         {
             label: 'Compétences',
@@ -63,7 +63,7 @@ export default function Dashboard({
             detail: 'Catégories affichées',
             icon: Wrench,
             href: '/admin/skills',
-            accent: 'text-emerald-300 bg-emerald-400/10',
+            accent: 'text-[#d6ff3f] bg-[#d6ff3f]/10',
         },
         {
             label: 'Parcours',
@@ -71,7 +71,7 @@ export default function Dashboard({
             detail: 'Étapes de la timeline',
             icon: GraduationCap,
             href: '/admin/timeline',
-            accent: 'text-teal-300 bg-teal-400/10',
+            accent: 'text-[#c8b8ff] bg-[#7658d6]/20',
         },
         {
             label: 'Services',
@@ -79,7 +79,7 @@ export default function Dashboard({
             detail: 'Cartes de services',
             icon: Briefcase,
             href: '/admin/services',
-            accent: 'text-emerald-300 bg-emerald-400/10',
+            accent: 'text-[#d6ff3f] bg-[#d6ff3f]/10',
         },
         {
             label: 'CV en ligne',
@@ -87,7 +87,7 @@ export default function Dashboard({
             detail: hasCv ? 'PDF téléchargeable' : 'Aucun fichier déposé',
             icon: FileText,
             href: '/admin/profil',
-            accent: 'text-teal-300 bg-teal-400/10',
+            accent: 'text-[#c8b8ff] bg-[#7658d6]/20',
         },
     ];
 
@@ -95,12 +95,12 @@ export default function Dashboard({
         <AdminLayout>
             <Head title="Tableau de bord — Administration" />
             <PageHeader
-                title="Tableau de bord"
-                description="Vue d’ensemble du contenu et des messages reçus."
+                title="Vue d’ensemble"
+                description="Gérez les contenus du portfolio et suivez les messages reçus."
                 action={
                     <Link
                         href="/admin/projects/create"
-                        className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-400 to-teal-500 px-4 py-2.5 text-sm font-medium text-zinc-950 transition-opacity hover:opacity-90"
+                        className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#d6ff3f] px-4 py-2.5 text-sm font-semibold text-[#17112d] transition-colors hover:bg-[#e3ff75] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d6ff3f]"
                     >
                         <Plus className="h-4 w-4" aria-hidden="true" />
                         Nouveau projet
@@ -116,7 +116,7 @@ export default function Dashboard({
                         <Link
                             key={card.label}
                             href={card.href}
-                            className="glass glow-card group rounded-2xl p-5 transition-colors hover:border-emerald-400/30"
+                            className="group rounded-xl border border-white/10 bg-white/[0.035] p-5 transition-colors hover:border-[#d6ff3f]/35 hover:bg-white/[0.055] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#d6ff3f]"
                         >
                             <div className="flex items-start justify-between">
                                 <div
@@ -131,7 +131,7 @@ export default function Dashboard({
                                     {card.value}
                                 </span>
                             </div>
-                            <p className="mt-4 text-sm font-medium text-zinc-200">
+                            <p className="mt-4 text-sm font-semibold text-zinc-100">
                                 {card.label}
                             </p>
                             <p className="mt-0.5 text-xs text-zinc-500">
@@ -143,7 +143,7 @@ export default function Dashboard({
             </div>
 
             <div className="mt-8 grid gap-6 lg:grid-cols-[1.6fr_1fr]">
-                <section className="glass rounded-2xl p-5 sm:p-6">
+                <section className="rounded-xl border border-white/10 bg-white/[0.035] p-5 sm:p-6">
                     <div className="mb-4 flex items-center justify-between gap-3">
                         <div>
                             <h2 className="text-base font-semibold text-zinc-100">
@@ -155,7 +155,7 @@ export default function Dashboard({
                         </div>
                         <Link
                             href="/admin/messages"
-                            className="text-xs font-medium text-emerald-300 hover:text-emerald-200"
+                            className="text-xs font-semibold text-[#d6ff3f] hover:text-[#e3ff75]"
                         >
                             Tout voir
                         </Link>
@@ -172,7 +172,7 @@ export default function Dashboard({
                                 <Link
                                     key={message.id}
                                     href={`/admin/messages/${message.id}`}
-                                    className="flex items-center gap-3 py-3 transition-colors hover:text-emerald-300"
+                                    className="flex items-center gap-3 py-3 transition-colors hover:text-[#d6ff3f]"
                                 >
                                     <div className="min-w-0 flex-1">
                                         <p className="truncate text-sm font-medium text-zinc-200">
@@ -200,7 +200,7 @@ export default function Dashboard({
                     )}
                 </section>
 
-                <section className="glass rounded-2xl p-5 sm:p-6">
+                <section className="rounded-xl border border-white/10 bg-white/[0.035] p-5 sm:p-6">
                     <h2 className="text-base font-semibold text-zinc-100">
                         Actions rapides
                     </h2>
@@ -210,21 +210,21 @@ export default function Dashboard({
                     <div className="space-y-2">
                         <Link
                             href="/admin/profil"
-                            className="flex items-center gap-3 rounded-xl border border-white/10 px-3 py-2.5 text-sm text-zinc-300 transition-colors hover:border-emerald-400/30 hover:bg-emerald-400/5 hover:text-emerald-300"
+                            className="flex items-center gap-3 rounded-lg border border-white/10 px-3 py-2.5 text-sm text-zinc-300 transition-colors hover:border-[#d6ff3f]/30 hover:bg-[#d6ff3f]/5 hover:text-[#d6ff3f]"
                         >
                             <UserRound className="h-4 w-4" aria-hidden="true" />
                             Modifier le profil et le CV
                         </Link>
                         <Link
                             href="/admin/messages?filter=unread"
-                            className="flex items-center gap-3 rounded-xl border border-white/10 px-3 py-2.5 text-sm text-zinc-300 transition-colors hover:border-emerald-400/30 hover:bg-emerald-400/5 hover:text-emerald-300"
+                            className="flex items-center gap-3 rounded-lg border border-white/10 px-3 py-2.5 text-sm text-zinc-300 transition-colors hover:border-[#d6ff3f]/30 hover:bg-[#d6ff3f]/5 hover:text-[#d6ff3f]"
                         >
                             <Mail className="h-4 w-4" aria-hidden="true" />
                             Lire les messages non lus
                         </Link>
                         <Link
                             href="/admin/projects/create"
-                            className="flex items-center gap-3 rounded-xl border border-white/10 px-3 py-2.5 text-sm text-zinc-300 transition-colors hover:border-emerald-400/30 hover:bg-emerald-400/5 hover:text-emerald-300"
+                            className="flex items-center gap-3 rounded-lg border border-white/10 px-3 py-2.5 text-sm text-zinc-300 transition-colors hover:border-[#d6ff3f]/30 hover:bg-[#d6ff3f]/5 hover:text-[#d6ff3f]"
                         >
                             <Plus className="h-4 w-4" aria-hidden="true" />
                             Ajouter un projet

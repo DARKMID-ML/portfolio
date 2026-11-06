@@ -15,7 +15,7 @@ return [
     'admin' => [
         'name' => env('ADMIN_NAME', 'Administrateur'),
         'email' => env('ADMIN_EMAIL', 'admin@portfolio.local'),
-        'password' => env('ADMIN_PASSWORD', 'password'),
+        'password' => env('ADMIN_PASSWORD'),
     ],
 
 ];
